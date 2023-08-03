@@ -37,17 +37,20 @@ const RoomPage = () => {
   // const [isCommentAdded, setIsCommentAdded] = useState(true)
   const [roomComment, setRoomComment] = useState([]);
   const [replyParentComment, setReplyParentComment] = useState({});
+  const [isAddedComment, setIsAddedComment] = useState(false)
 
   useEffect(() => {
     getRoomData();
-    getRoomCommentData();
+    getRoomCommentData(true);
     addCommentRef.current.focus();
+    // commentLastRef.current?.scrollIntoView();
   },[]); // eslint-disable-line react-hooks/exhaustive-deps
   // TODO fix dependency 
 
   useEffect(() => {
     commentLastRef.current?.scrollIntoView();
-  },[roomComment]); 
+    setIsAddedComment(false)
+  },[isAddedComment]); 
   // TODO fix dependency
  
   const getRoomData = async () => {
@@ -64,7 +67,8 @@ const RoomPage = () => {
     }
   };
 
-  const getRoomCommentData = async () => {
+
+  const getRoomCommentData = async (shouldSetIsAdded=false) => {
     try {
       const response = await axios.get(
         BASE_URL + `rooms/${room_id}/comments`,
@@ -72,13 +76,17 @@ const RoomPage = () => {
       );
       const data = response.data;
       setRoomComment(data);
+      if (shouldSetIsAdded) {
+        setIsAddedComment(true)
+      }
+      
     } catch (error) {
       errorCheck(error);
     }
   };
 
-  const handleCommentUpdated = () => {
-    getRoomCommentData();
+  const handleCommentUpdated = (shouldSetIsAdded = false) => {
+    getRoomCommentData(shouldSetIsAdded);
   };
 
   const handleReply = (parentComment) => {
@@ -166,6 +174,7 @@ const RoomPage = () => {
             addCommentRef={addCommentRef}
             replyParentComment={replyParentComment}
             setReplyParentComment={setReplyParentComment}
+            setIsAddedComment={setIsAddedComment}
             // scrollToAddComment={scrollToAddComment}
           />
           {/* </Card.Footer> */}

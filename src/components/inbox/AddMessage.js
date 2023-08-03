@@ -42,7 +42,7 @@ const AddMessage = ({
 
       // console.log(response.data);
       // console.log(room_id);
-      handleMessageUpdated();
+      handleMessageUpdated(true);
     } catch (error) {
       errorCheck(error);
     }

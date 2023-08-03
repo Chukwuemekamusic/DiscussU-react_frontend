@@ -40,10 +40,11 @@ const AddComments = ({
       // Reset input field
       setNewComment("");
       setReplyParentComment({});
+      
 
       // console.log(response.data);
       // console.log(room_id);
-      handleCommentUpdated();
+      handleCommentUpdated(true);
     } catch (error) {
       errorCheck(error);
     }

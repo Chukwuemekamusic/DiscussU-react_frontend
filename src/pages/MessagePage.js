@@ -19,10 +19,11 @@ const MessagePage = () => {
   const commentLastRef = useRef(null);
 
   const student = useHomeStore((state) => state.getStudentById(studentId));
+  const [isAddedComment, setIsAddedComment] = useState(false)
 
   useEffect(() => {
     // Fetch all messages from the specific user
-    fetchMessages();
+    fetchMessages(true);
     addCommentRef.current.focus();
     commentLastRef.current.focus();
     commentLastRef.current?.scrollIntoView();
@@ -30,9 +31,9 @@ const MessagePage = () => {
 
   useEffect(() => {
     commentLastRef.current?.scrollIntoView();
-  }, [messages])
+  }, [isAddedComment])
 
-  const fetchMessages = async () => {
+  const fetchMessages = async (shouldSetIsAdded=false) => {
     try {
       const token = Cookies.get("token");
       const response = await axios.get(
@@ -40,13 +41,16 @@ const MessagePage = () => {
         getHeaders(token)
       );
       setMessages(response.data);
+      if (shouldSetIsAdded) {
+        setIsAddedComment(true)
+      }
     } catch (error) {
       console.error("Error fetching messages:", error);
     }
   };
 
-  const handleMessageUpdated = () => {
-    fetchMessages();
+  const handleMessageUpdated = (shouldSetIsAdded=false) => {
+    fetchMessages(shouldSetIsAdded);
   };
 
   const autoReloadComments = () => {
