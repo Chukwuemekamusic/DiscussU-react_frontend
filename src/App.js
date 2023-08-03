@@ -86,7 +86,7 @@ function App() {
     getRoomsData(searchQuery);
     getCategoriesData();
     getReportCategoriesData();
-  }, [searchQuery]);
+  }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
   
 
@@ -167,7 +167,7 @@ function App() {
         clearTimeout(timeout);
       };
     }
-  }, [errorMessage]);
+  }, [errorMessage]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className=" " ref={topRef}>

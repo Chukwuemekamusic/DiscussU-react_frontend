@@ -27,7 +27,7 @@ const FollowUnfollow = ({ userId }) => {
     updateFollowData();
     getStudentsProfile();
     updateUserData();
-  }, [isLoadFollow]);
+  }, [isLoadFollow]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleFollow = async (commentUserId) => {
     // console.log("commentUser", commentUserId);

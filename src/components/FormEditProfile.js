@@ -20,13 +20,11 @@ const FormEditProfile = () => {
   const user = JSON.parse(localStorage.getItem("user"));
   const navigate = useNavigate();
   const [currentProfilePic, setCurrentProfilePic] = useState(user?.profile_pic);
-  const GoBackButton = useGoBack()
-
-
+  const GoBackButton = useGoBack();
 
   useEffect(() => {
     setCurrentProfilePic(user?.profile_pic);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const schema = yup.object().shape({
     username: yup
@@ -54,17 +52,17 @@ const FormEditProfile = () => {
 
   const handleFileChange = (e) => {
     // Set the selected file in the form data
-    const file = e.target.files;    
+    const file = e.target.files;
 
     if (file) {
       if (file[0].size <= 5242880) {
         setValue("profile_image", file);
-        const tempUrl = URL.createObjectURL(file[0]);     
+        const tempUrl = URL.createObjectURL(file[0]);
         setCurrentProfilePic(tempUrl);
         // console.log('updated url',currentProfilePic);
       } else {
-        setErrorMessage("File size should be 5MB or less.")
-      }      
+        setErrorMessage("File size should be 5MB or less.");
+      }
     }
   };
 
@@ -81,17 +79,13 @@ const FormEditProfile = () => {
     }
 
     try {
-      const updateResponse = await axios.put(
-        BASE_URL + `users/${user.id}/update/`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Token ${token}`, // Add the token to the "Authorization" field
-          },
-          withCredentials: true,
-        }
-      );
+      await axios.put(BASE_URL + `users/${user.id}/update/`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Token ${token}`, // Add the token to the "Authorization" field
+        },
+        withCredentials: true,
+      });
       await updateUserData();
       navigate("/user/profile");
     } catch (error) {

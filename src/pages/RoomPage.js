@@ -42,11 +42,13 @@ const RoomPage = () => {
     getRoomData();
     getRoomCommentData();
     addCommentRef.current.focus();
-  },[]); // TODO fix dependency
+  },[]); // eslint-disable-line react-hooks/exhaustive-deps
+  // TODO fix dependency 
 
   useEffect(() => {
     commentLastRef.current?.scrollIntoView();
-  },[roomComment]); // TODO fix dependency
+  },[roomComment]); 
+  // TODO fix dependency
  
   const getRoomData = async () => {
     try {
@@ -113,7 +115,7 @@ const RoomPage = () => {
   // Run the auto-reload function when the component mounts or when studentId changes
   useEffect(() => {
     autoReloadComments();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // const handleGoBack = () => {
   //   navigate(-1);

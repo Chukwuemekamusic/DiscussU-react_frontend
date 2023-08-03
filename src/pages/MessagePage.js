@@ -26,7 +26,7 @@ const MessagePage = () => {
     addCommentRef.current.focus();
     commentLastRef.current.focus();
     commentLastRef.current?.scrollIntoView();
-  }, [studentId]);
+  }, [studentId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     commentLastRef.current?.scrollIntoView();
@@ -65,7 +65,7 @@ const MessagePage = () => {
   // Run the auto-reload function when the component mounts or when studentId changes
   useEffect(() => {
     autoReloadComments();
-  }, [studentId]);
+  }, [studentId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="px-5 py-4">

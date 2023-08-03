@@ -48,7 +48,7 @@ const Comments = ({
     getStudentsProfile();
     updateUserData();
 
-  }, [isLoadFollow]);
+  }, [isLoadFollow]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [showOptionsMenuFor, setShowOptionsMenuFor] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);

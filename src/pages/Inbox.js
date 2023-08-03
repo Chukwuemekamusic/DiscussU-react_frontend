@@ -27,7 +27,7 @@ const Inbox = () => {
     };
 
     fetchMessages();
-  }, []);
+  }, []); 
 
   if (messages.length === 0) {
     return (

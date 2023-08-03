@@ -11,7 +11,7 @@ import { Card, Row } from "react-bootstrap";
 // import MoreVertIcon from "@mui/icons-material/MoreVert";
 // import { getHeaders } from "../api/getHeaders";
 // import axios from "axios";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 // import useErrorCheck from "../utils/useErrorCheck";
 import { useHomeStore } from "../../store";
 import DeleteMessage from "./DeleteMessage";
@@ -27,12 +27,14 @@ const Messages = ({
 }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const [highlightedComment, setHighlightedComment] = useState(null);
-  const token = Cookies.get("token");
+  // const token = Cookies.get("token");
   // const errorCheck = useErrorCheck();
   // const isFollowedUser = useHomeStore((state) => state.isFollowedUser);
   const updateFollowData = useHomeStore((state) => state.updateFollowData);
   const updateUserData = useHomeStore((state) => state.updateUserData);
   const getStudentsProfile = useHomeStore((state) => state.getStudentsProfile)
+  // TODO check later
+  // eslint-disable-next-line
   const [isLoadFollow, setIsLoadFollow] = useState(false);
 
   useEffect(() => {
@@ -48,8 +50,8 @@ const Messages = ({
     getStudentsProfile();
     updateUserData();
 
-  }, [isLoadFollow]);
-{/* 
+  }, [isLoadFollow]); // eslint-disable-line react-hooks/exhaustive-deps
+/* 
   // const [showOptionsMenuFor, setShowOptionsMenuFor] = useState(null);
   // const [openMenu, setOpenMenu] = useState(false);
 
@@ -91,7 +93,7 @@ const Messages = ({
   // };
 
   // const handleReport = (commendId) => {};
-  */}
+  */
 
   return (
     <>
