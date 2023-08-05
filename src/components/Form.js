@@ -26,7 +26,7 @@ const Form = () => {
 
   const GoBack = useGoBack();
 
-  const { setAuth} = useContext(AuthContext);
+  const { setAuth } = useContext(AuthContext);
 
   //   logout anyone who want to access the form
   if (token) {
@@ -34,10 +34,13 @@ const Form = () => {
   }
 
   const schema = yup.object().shape({
-    username: yup.string().required().matches(
-      /^[a-zA-Z0-9@/./+/-/_]+$/,
-      "Username may only contain letters, numbers, and @/./+/-/_ characters"
-    ),
+    username: yup
+      .string()
+      .required()
+      .matches(
+        /^[a-zA-Z0-9@/./+/-/_]+$/,
+        "Username may only contain letters, numbers, and @/./+/-/_ characters"
+      ),
     first_name: yup.string().required(),
     last_name: yup.string().required(),
     email: yup.string().email().required(),
@@ -70,17 +73,18 @@ const Form = () => {
 
   const handleFileChange = (e) => {
     // Set the selected file in the form data
-    const file = e.target.files;    
+    const file = e.target.files;
 
     if (file) {
-      if (file[0].size <= 2621440 ) { // 5242880
+      if (file[0].size <= 2621440) {
+        // 5242880
         setValue("profile_image", file);
-        const tempUrl = URL.createObjectURL(file[0]);     
+        const tempUrl = URL.createObjectURL(file[0]);
         setCurrentProfilePic(tempUrl);
         // console.log('updated url',currentProfilePic);
       } else {
-        setErrorMessage("File size should be 2.5MB or less")
-      }      
+        setErrorMessage("File size should be 2.5MB or less");
+      }
     }
   };
 
@@ -88,19 +92,18 @@ const Form = () => {
     // console.log('profile_image', data.profile_image[0]);
 
     let formData = new FormData();
-    formData.append('username', data.username);
-    formData.append('first_name', data.first_name);
-    formData.append('last_name', data.last_name);
-    formData.append('email', data.email);
-    formData.append('student_id', data.student_id);
-    formData.append('school', data.school);
-    formData.append('course', data.course);
-    formData.append('password', data.password);
+    formData.append("username", data.username);
+    formData.append("first_name", data.first_name);
+    formData.append("last_name", data.last_name);
+    formData.append("email", data.email);
+    formData.append("student_id", data.student_id);
+    formData.append("school", data.school);
+    formData.append("course", data.course);
+    formData.append("password", data.password);
     if (data.profile_image) {
-        formData.append('profile_pic', data.profile_image[0]);
-        console.log('profile_image', 'yes');
-      }
-    
+      formData.append("profile_pic", data.profile_image[0]);
+      console.log("profile_image", "yes");
+    }
 
     try {
       const registrationResponse = await axios.post(
@@ -113,14 +116,14 @@ const Form = () => {
       );
       // console.log("Registration data", registrationResponse.data);
 
-    //   login user immediately
+      //   login user immediately
       if (registrationResponse.data.username) {
         handleLogin(data);
       } else {
         console.error("Registration failed.");
       }
     } catch (error) {
-      ErrorCheck(error)
+      ErrorCheck(error);
       // errorCheck(error)
     }
   };
@@ -140,7 +143,7 @@ const Form = () => {
       Cookies.set("token", newToken);
 
       // set the user
-      const user = await returnUserData(newToken)
+      const user = await returnUserData(newToken);
       localStorage.setItem("user", JSON.stringify(user));
 
       setAuth({ newToken });
@@ -154,8 +157,8 @@ const Form = () => {
 
   return (
     <div className="container-md p-3">
-      <GoBack/>
-      <h1 >Registration Form</h1>
+      <GoBack />
+      <h1>Registration Form</h1>
       <form className="needs-validation" onSubmit={handleSubmit(onSubmit)}>
         {/* 'id', 'username', 'first_name', 'last_name',
                   'email', 'student_id', 'school', 'course' */}
@@ -325,4 +328,3 @@ const Form = () => {
 };
 
 export default Form;
-
