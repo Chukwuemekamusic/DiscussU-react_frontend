@@ -53,7 +53,7 @@ const MessagePage = () => {
     fetchMessages(shouldSetIsAdded);
   };
 
-  const autoReloadComments = () => {
+  /* const autoReloadComments = () => {
     // Call the update function initially
     fetchMessages();
 
@@ -70,6 +70,7 @@ const MessagePage = () => {
   useEffect(() => {
     autoReloadComments();
   }, [studentId]); // eslint-disable-line react-hooks/exhaustive-deps
+  */
 
   return (
     <div className="px-5 py-4">
