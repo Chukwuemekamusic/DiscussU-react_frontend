@@ -16,7 +16,7 @@ import useErrorCheck from "../components/utils/useErrorCheck";
 import { Card, Container } from "react-bootstrap";
 // import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import RoomHeader from "../components/RoomHeader";
-// import "../css/RoomHeader.css";
+import withAuth from "../context/withAuth";
 
 const RoomPage = () => {
   const params = useParams();
@@ -107,7 +107,7 @@ const RoomPage = () => {
   };
 
   // temporal solution to the socket challenge
-  const autoReloadComments = () => {
+  /* const autoReloadComments = () => {
     // Call the update function 
     getRoomCommentData()
 
@@ -123,7 +123,7 @@ const RoomPage = () => {
   // Run the auto-reload function when the component mounts or when studentId changes
   useEffect(() => {
     autoReloadComments();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps */
 
   // const handleGoBack = () => {
   //   navigate(-1);
@@ -212,4 +212,4 @@ const RoomPage = () => {
   );
 };
 
-export default RoomPage;
+export default withAuth(RoomPage);

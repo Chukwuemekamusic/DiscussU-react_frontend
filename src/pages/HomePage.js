@@ -7,6 +7,7 @@ import useHandleLogout from "../components/utils/useHandleLogout";
 import "./Home.css"
 import RoomsFeed2 from "../components/RoomsFeed2";
 
+
 const HomePage = ({ sortRoomsByCategory, token, setSearchQuery }) => {
 
   const [rooms, categories] = useHomeStore((state) => [
