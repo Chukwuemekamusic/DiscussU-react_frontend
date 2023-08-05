@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import MyRooms from "../components/profile/MyRooms";
 import MyParticipatedRooms from "../components/profile/MyParticipatedRooms";
 import BioForm from "../components/BioForm";
+import withAuth from "../context/withAuth";
 // import FollowUnfollow from "../components/FollowUnfollow";
 
 const UserProfilePage = () => {
@@ -131,4 +132,4 @@ const UserProfilePage = () => {
   );
 };
 
-export default UserProfilePage;
+export default withAuth(UserProfilePage);

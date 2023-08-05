@@ -6,6 +6,7 @@ import MyRooms from "../components/profile/MyRooms";
 import { useGoBack } from "../components/utils/utilFunctions";
 import FollowUnfollow from "../components/FollowUnfollow";
 import Chat from "./Chat";
+import withAuth from "../context/withAuth";
 // import { useHomeStore } from "../store";
 
 const StudentProfilePage = () => {
@@ -141,4 +142,4 @@ const StudentProfilePage = () => {
   );
 };
 
-export default StudentProfilePage;
+export default withAuth(StudentProfilePage);
