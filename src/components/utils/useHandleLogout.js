@@ -24,7 +24,7 @@ const useHandleLogout = () => {
         getHeaders(token)
       );
     } catch (error) {
-      console.error(error.response.data.detail);
+      // console.error(error.response?.data.detail);
     } finally {
       Cookies.remove("token");
       localStorage.removeItem("user");
