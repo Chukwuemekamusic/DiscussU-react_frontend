@@ -65,7 +65,7 @@ const Login = () => {
       setPassword("");
       const user = await returnUserData(token) // retrieves the user detail and save to local storage
       localStorage.setItem("user", JSON.stringify(user))
-      window.location.reload() // TODO fix this temporal solution
+      // window.location.reload() // TODO fix this temporal solution
       navigate("/");
     } catch (error) {
       errorCheck(error)
