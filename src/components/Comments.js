@@ -35,12 +35,27 @@ const Comments = ({
   const getStudentsProfile = useHomeStore((state) => state.getStudentsProfile)
   const [isLoadFollow, setIsLoadFollow] = useState(false);
 
+  // useEffect(() => {
+  //   if (highlightedComment) {
+  //     setTimeout(() => {
+  //       setHighlightedComment(null);
+  //     }, 4000);
+  //   }
+  // }, [highlightedComment]);
+
   useEffect(() => {
+    let myTimeOut
     if (highlightedComment) {
-      setTimeout(() => {
+      myTimeOut = setTimeout(() => {
         setHighlightedComment(null);
       }, 4000);
     }
+
+    return () => {
+      if (myTimeOut) {
+      clearTimeout(myTimeOut)
+    }}
+
   }, [highlightedComment]);
 
   useEffect(() => {

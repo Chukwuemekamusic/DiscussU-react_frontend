@@ -38,11 +38,17 @@ const Messages = ({
   const [isLoadFollow, setIsLoadFollow] = useState(false);
 
   useEffect(() => {
+    let myTimeOut
     if (highlightedComment) {
-      setTimeout(() => {
+      myTimeOut = setTimeout(() => {
         setHighlightedComment(null);
       }, 4000);
     }
+
+    return () => {
+      if (myTimeOut) {
+      clearTimeout(myTimeOut)
+    }}
   }, [highlightedComment]);
 
   useEffect(() => {
