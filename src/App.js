@@ -6,33 +6,34 @@ import {
   // useNavigate,
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import RoomPage from "./pages/RoomPage";
 import Login from "./pages/Login";
 import NavbarMain from "./components/NavbarMain";
 
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import axios from "axios";
 import { getHeaders } from "./api/getHeaders";
 import BASE_URL from "./api/apiConfig";
 import Cookies from "js-cookie";
 import { useHomeStore } from "./store";
-import Form from "./components/Form";
-import RoomCreateForm from "./components/RoomCreateForm";
-
 import useErrorCheck from "./components/utils/useErrorCheck";
-import RoomUpdateForm from "./components/RoomUpdateForm";
-import UserProfilePage from "./pages/UserProfile";
-import Inbox from "./pages/Inbox";
-import MessagePage from "./pages/MessagePage";
+
 
 import { Container, Row, Col } from "react-bootstrap";
 
 import Sidebar2 from "./components/Sidebar2";
 
-import FormEditProfile from "./components/FormEditProfile";
-import StudentProfilePage from "./pages/StudentProfile";
+
 import ErrorMessage from "./components/ErrorMessage";
+
+const RoomPage = lazy(() => import('./pages/RoomPage'));
+const Form = lazy(() => import('./components/Form'));
+const RoomCreateForm = lazy(() => import('./components/RoomCreateForm'));
+const Inbox = lazy(() => import('./pages/Inbox'));
+const MessagePage = lazy(() => import('./pages/MessagePage'));
+const RoomUpdateForm = lazy(() => import('./components/RoomUpdateForm'));
+const UserProfilePage = lazy(() => import('./pages/UserProfile'));
+const FormEditProfile = lazy(() => import('./components/FormEditProfile'));
+const StudentProfilePage = lazy(() => import('./pages/StudentProfile'));
 
 
 function App() {
@@ -198,6 +199,7 @@ function App() {
             {errorMessage && (
               <ErrorMessage message={errorMessage} onClose={handleCloseError} />
             )}
+            <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route
                 element={
@@ -227,6 +229,7 @@ function App() {
               <Route element={<Inbox />} path="/inbox" />
               <Route element={<MessagePage />} path="/inbox/:id" />
             </Routes>
+            </Suspense>
             {/* </div> */}
           </Col>
         </Row>
