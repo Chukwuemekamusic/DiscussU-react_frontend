@@ -10,6 +10,7 @@ import withAuth from "../context/withAuth";
 
 const UserProfilePage = () => {
   const navigate = useNavigate();
+  // const updateUserData = useHomeStore((state) => state.updateUserData)
   // const rooms = useHomeStore((state) => state.rooms);
   const user = JSON.parse(localStorage.getItem("user"));
 

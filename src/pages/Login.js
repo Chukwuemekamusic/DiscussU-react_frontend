@@ -13,6 +13,7 @@ import useErrorCheck from "../components/utils/useErrorCheck";
 const Login = () => {
   const { setAuth} = useContext(AuthContext);
   const returnUserData = useHomeStore((state) => state.returnUserData)
+  // const updateUserData = useHomeStore((state) => state.updateUserData)
   const userRef = useRef();
   const errRef = useRef();
 
@@ -55,6 +56,8 @@ const Login = () => {
       );
       const token = response.data.token;
       const expiry = response.data.expiry
+      const user = await returnUserData(token) // retrieves the user detail and save to local storage
+      localStorage.setItem("user", JSON.stringify(user))
       Cookies.set("token", token);
       Cookies.set("expiry", expiry)
       
@@ -63,9 +66,10 @@ const Login = () => {
       // reset input
       setEmail("");
       setPassword("");
-      const user = await returnUserData(token) // retrieves the user detail and save to local storage
-      localStorage.setItem("user", JSON.stringify(user))
-      // window.location.reload() // TODO fix this temporal solution
+
+      // await updateUserData();
+            
+      window.location.reload() // TODO fix this temporal solution
       navigate("/");
     } catch (error) {
       errorCheck(error)

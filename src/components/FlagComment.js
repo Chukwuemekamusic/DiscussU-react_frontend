@@ -96,7 +96,7 @@ const FlagComment = ({ comment }) => {
             onChange={handleDetailsChange}
             placeholder="Additional details"
           />
-          <button className="btn btn-sm btn-primary m-1" onClick={handleFlagComment}>Flag Comment</button>
+          <button className="btn btn-sm btn-danger m-1" onClick={handleFlagComment}>Flag Comment</button> <br/>
         </>
       )}
     </>

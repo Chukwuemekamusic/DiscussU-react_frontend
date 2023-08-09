@@ -89,6 +89,8 @@ const useHomeStore = create((set) => ({
         getHeaders(t)
       );
       const user = await response.data;
+      // localStorage.setItem("user", JSON.stringify(user))
+      set((state) => ({ user: user, ...state }));
 
       return user;
     } catch (error) {
