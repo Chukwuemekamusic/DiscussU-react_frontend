@@ -56,8 +56,6 @@ const Login = () => {
       );
       const token = response.data.token;
       const expiry = response.data.expiry
-      const user = await returnUserData(token) // retrieves the user detail and save to local storage
-      localStorage.setItem("user", JSON.stringify(user))
       Cookies.set("token", token);
       Cookies.set("expiry", expiry)
       
@@ -68,7 +66,8 @@ const Login = () => {
       setPassword("");
 
       // await updateUserData();
-            
+      const user = await returnUserData(token) // retrieves the user detail and save to local storage
+      localStorage.setItem("user", JSON.stringify(user))            
       window.location.reload() // TODO fix this temporal solution
       navigate("/");
     } catch (error) {
