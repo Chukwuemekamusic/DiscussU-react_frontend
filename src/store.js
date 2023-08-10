@@ -10,6 +10,7 @@ const token = Cookies.get("token");
 
 const useHomeStore = create((set) => ({
   rooms: [],
+  allRooms: [],
   categories: [],
   reportCategories: [],
   isopen: false,
@@ -21,6 +22,7 @@ const useHomeStore = create((set) => ({
   isSorted: false,
 
   setRooms: (data) => set(() => ({ rooms: data })),
+  setAllRooms: (data) => set(() => ({ allRooms: data })),
   setCategories: (data) => set(() => ({ categories: data })),
   setReportCategories: (data) => set(() => ({ reportCategories: data })),
   setIsopen: () => set((state) => ({ isopen: !state.isopen })),

@@ -42,6 +42,8 @@ function App() {
   const [
     rooms,
     setRooms,
+    allRooms,
+    setAllRooms,
     setCategories,
     setReportCategories,
     isopen,
@@ -56,6 +58,8 @@ function App() {
   ] = useHomeStore((state) => [
     state.rooms,
     state.setRooms,
+    state.allRooms,
+    state.setAllRooms,
     state.setCategories,
     state.setReportCategories,
     state.isopen,
@@ -83,11 +87,11 @@ function App() {
     //  eslint-disable-next-line
   }, [token]);
 
-  useEffect(() => {
-    getRoomsData(searchQuery);
-    getCategoriesData();
-    getReportCategoriesData();
-  }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   getRoomsData(searchQuery);
+  //   getCategoriesData();
+  //   getReportCategoriesData();
+  // }, [searchQuery]); // eslint-disable-line react-hooks/exhaustive-deps
 
   
 
@@ -102,7 +106,8 @@ function App() {
         getHeaders(token)
       );
       const data = await response.data;
-      setRooms(data);
+      setAllRooms(data);
+      setRooms(data)
       // console.log(data);
     } catch (error) {
       errorCheck(error);
@@ -132,8 +137,27 @@ function App() {
     } catch (error) {}
   };
 
-  const sortRoomsByCategory = (q) => {
-    getRoomsData(q);
+  const sortRoomsByCategory = (category) => {
+    // getRoomsData(q);
+    if (category) {
+      const filtered_rooms = allRooms.filter((room) => {
+        return room.category === category
+      })
+      setRooms(filtered_rooms)
+    } else {
+      setRooms(allRooms)
+    }
+  };
+
+  const searchRooms = (query) => {
+    const lowerCaseQuery = query.toLowerCase();
+    const filteredRooms = allRooms.filter((room) => (
+      room.category?.toLowerCase().includes(lowerCaseQuery) ||
+      room.name?.toLowerCase().includes(lowerCaseQuery) ||
+      (room.description?.toLowerCase().includes(lowerCaseQuery))      
+    ));
+    console.log('filtered room', filteredRooms);
+    setRooms(filteredRooms);
   };
 
   // get List of schools
@@ -179,7 +203,7 @@ function App() {
         setSearchQuery={setSearchQuery}
         isopen={isopen}
         setIsOpen={setIsOpen}
-        sortRoomsByCategory={sortRoomsByCategory}
+        searchRooms={searchRooms}
       />
       {/* className=" d-flex" */}
       <Container fluid className="body pt-4">

@@ -5,7 +5,7 @@ import { handleDateAndTime } from "../utils/utilFunctions";
 import { useState } from "react";
 
 const MyRooms = ({ user, title }) => {
-  const rooms = useHomeStore((state) => state.rooms);
+  const rooms = useHomeStore((state) => state.allRooms);
   const user_rooms = rooms.filter((room) => room.host === user.id);
   const [showUserRooms, setShowUserRooms] = useState(false);
   

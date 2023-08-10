@@ -7,7 +7,7 @@ import { Navbar, Nav, FormControl } from "react-bootstrap";
 
 // import UserNav from "./dropdown/UserNav";
 
-const NavbarMain = ({ setSearchQuery, searchQuery, sortRoomsByCategory }) => {
+const NavbarMain = ({ setSearchQuery, searchQuery, searchRooms }) => {
   const user = localStorage.getItem ? JSON.parse(localStorage.getItem("user")) : null
   // const handleLogout = useHandleLogout()
  
@@ -18,7 +18,7 @@ const NavbarMain = ({ setSearchQuery, searchQuery, sortRoomsByCategory }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    sortRoomsByCategory(search);
+    searchRooms(search);
 
     // setSearch("");
     navigate(`/?q=${searchQuery}`);

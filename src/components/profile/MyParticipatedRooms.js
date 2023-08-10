@@ -5,7 +5,7 @@ import moment from "moment";
 import { useState } from "react";
 
 const MyParticipatedRooms = ({ user }) => {
-  const rooms = useHomeStore((state) => state.rooms);
+  const rooms = useHomeStore((state) => state.allRooms);
   // const user_rooms = rooms.filter((room) => room.host === user.id);
   const participated_rooms = rooms.filter((room) => {
     return room.participants.find((participant) => participant.id === user.id) &&

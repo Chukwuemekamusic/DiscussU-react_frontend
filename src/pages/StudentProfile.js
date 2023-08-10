@@ -14,7 +14,7 @@ const StudentProfilePage = () => {
   const params = useParams();
   const student_id = params.id;
 
-  const rooms = useHomeStore((state) => state.rooms);
+  const rooms = useHomeStore((state) => state.allRooms);
   // const getStudentsProfile = useHomeStore((state) => state.getStudentsProfile);
   // const user = JSON.parse(localStorage.getItem("user"));
 

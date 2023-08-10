@@ -18,33 +18,12 @@ export const AuthProvider = ({ children }) => {
   };
   
 
-  // useEffect(() => {
-  //   const storedToken = Cookies.get("token");
-    
-  //   if (storedToken) {
-  //     setAuth({ token: storedToken });
-  //   }
-  //   if (storedUser) {
-  //     setUser(storedUser);
-  //   }
-  // }, []);
-
   const logout = () => {
     Cookies.remove("token");
     localStorage.removeItem("user");
     setAuth({});
     // handleSetUser(null)
   };
-
-  // const getHeaders = (q) => {
-  //   return {
-  //     headers: {
-  //       Authorization: `Token ${q}`,
-  //     },
-  //   };
-  // };
-
-
 
   return (
     <AuthContext.Provider
@@ -53,9 +32,6 @@ export const AuthProvider = ({ children }) => {
         setAuth: handleSetAuth,
         isAuthenticated,
         logout,
-        // setUser: handleSetUser,
-        // user,
-        // getStoredUser
       }}
     >
       {children}
