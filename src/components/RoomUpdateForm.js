@@ -121,9 +121,9 @@ const RoomUpdateForm = () => {
     };
 
     return (
-        <div className="container mb-3 p-3">
+        <div className="px-5 py-4">
             <GoBackButton/>
-            <h3>Update Room</h3>
+            <h3 className="page-header">Update Room</h3>
             <form className="needs-validation" onSubmit={handleSubmit(onSubmit)}>
                 {/* 'id', 'name', 'category', 'host', 'description',
          */}

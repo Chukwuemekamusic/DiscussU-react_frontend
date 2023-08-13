@@ -105,7 +105,7 @@ const RoomCreateForm = () => {
 
   return (
     <div className="px-5 py-4 mt-5">
-      <h1>Fill new Room Details</h1>
+      <h1 className="page-header">Fill new Room Details</h1>
       <form className="needs-validation mt-2" onSubmit={handleSubmit(onSubmit)}>
         {/* 'id', 'name', 'category', 'host', 'description',
          */}
