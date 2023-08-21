@@ -16,6 +16,7 @@ import { useGoBack } from "./utils/utilFunctions";
 const RoomUpdateForm = () => {
     const categories = useHomeStore((state) => state.categories);
     const schools = useHomeStore((state) => state.schools);
+    const updateRoomsData = useHomeStore((state) => state.updateRoomsData);
     const location = useLocation();
     const {room: roomData} = location.state;
     const GoBackButton = useGoBack();
@@ -99,6 +100,7 @@ const RoomUpdateForm = () => {
             );
             // console.log("Room update data", response.data);
             // getRoomData()
+            updateRoomsData()
             navigate(`/room/${response.data.id}`)
         } catch (error) {
             ErrorCheck(error);

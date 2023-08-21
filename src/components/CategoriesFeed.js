@@ -1,17 +1,17 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import '../css/Category.css'
-import { useHomeStore } from "../store";
+// import { useHomeStore } from "../store";
 
 const CategoriesFeed = ({ sortRoomsByCategory, categories,  }) => {
-  const setIsSorted = useHomeStore((state) => state.setIsSorted)
+  // const setIsSorted = useHomeStore((state) => state.setIsSorted)
 
   const handleCategoryClick = (d) => {
-    if (d===""){
-      setIsSorted(false)
-    } else {
-      setIsSorted(true)
-    }
+    // if (d===""){
+    //   setIsSorted(false)
+    // } else {
+    //   setIsSorted(true)
+    // }
     sortRoomsByCategory(d)
   }
   return (

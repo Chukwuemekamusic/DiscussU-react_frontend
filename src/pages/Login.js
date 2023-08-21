@@ -10,6 +10,9 @@ import LoginTwoToneIcon from "@mui/icons-material/LoginTwoTone"; // login
 import { useHomeStore } from "../store";
 import useErrorCheck from "../components/utils/useErrorCheck";
 
+// import { useForm } from "react-hook-form";
+// import * as yup from "yup";
+
 const Login = () => {
   const { setAuth} = useContext(AuthContext);
   const returnUserData = useHomeStore((state) => state.returnUserData)
@@ -17,6 +20,7 @@ const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
 
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");

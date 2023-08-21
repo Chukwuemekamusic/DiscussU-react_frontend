@@ -16,6 +16,7 @@ const RoomCreateForm = () => {
   const handleLogout = useHandleLogout();
   const categories = useHomeStore((state) => state.categories);
   const schools = useHomeStore((state) => state.schools);
+  const updateRoomsData = useHomeStore((state) => state.updateRoomsData);
   const token = Cookies.get("token");
   const navigate = useNavigate();
   const [category_name, setCategory_name] = useState("");
@@ -53,6 +54,7 @@ const RoomCreateForm = () => {
 
     // console.log("school data", data.school);
     if (data.category === "New Category") {
+      // TODO FIX THE SEVERAL SCHOOL CHOICE
       room = {
         name: data.name,
         description: data.description,
@@ -81,6 +83,7 @@ const RoomCreateForm = () => {
       );
       // console.log("Room create data", response.data);
       // await getRoomsData()
+      updateRoomsData()
       navigate(`/room/${response.data.id}`);
     } catch (error) {
       ErrorCheck(error);

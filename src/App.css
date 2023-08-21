@@ -393,29 +393,27 @@ a {
 } */
 .comment-section {
   /* max-height: 500px; Set a maximum height for the comment section to enable scrolling */
-  background-color: #ffc8dd; /* Add a background color for better readability */
-  /* background-color: #cbdfe1; */
-  padding: 15px; /* Add some padding to the comment section */
+  background-color: #ffc8dd; 
+  padding: 15px; 
   min-height: 400px;
   overflow-y: auto; 
-  /* Enable vertical scrolling */
 }
 
 .comment-section::-webkit-scrollbar {
-  width: 8px; /* Width of the scrollbar */
+  width: 8px; 
 }
 
 .comment-section::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Background color of the scrollbar track */
+  background: #f1f1f1; 
 }
 
 .comment-section::-webkit-scrollbar-thumb {
-  background: #9d5858; /* Color of the scrollbar thumb */
-  border-radius: 4px; /* Rounded corners for the thumb */
+  background: #9d5858; 
+  border-radius: 4px; 
 }
 
 .comment-section::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scrollbar thumb on hover */
+  background: #555; 
 }
 
 /* Styling for the individual comments */
@@ -443,12 +441,12 @@ a {
 .comment-options-menu {
   position: absolute;
   top: 20;
-  right: 0; /* Initial position outside the screen */
+  right: 0; 
   background-color: white;
   padding: 10px;
   border: 1px solid #ccc;
-  transition: right 0.3s ease-in-out; /* Transition animation for smooth movement */
-  z-index: 1; /* Make sure the options menu appears above other content */
+  transition: right 0.3s ease-in-out; 
+  z-index: 1; 
 }
 
 
@@ -519,8 +517,8 @@ a {
 } */
 
 .profile-image {
-  height: 100%; /* Make the image take the full height of its container */
-  object-fit: cover; /* Adjust the image to cover the container while maintaining aspect ratio */
+  height: 100%;
+  object-fit: cover; 
 }
 
 h1 {

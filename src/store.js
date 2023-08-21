@@ -61,6 +61,7 @@ const useHomeStore = create((set) => ({
     try {
       const response = await axios.get(BASE_URL + `rooms/`, getHeaders(token));
       const data = await response.data;
+      set({ allRooms: data });
       set({ rooms: data });
     } catch (error) {
       ErrorCheck(error);
