@@ -8,10 +8,23 @@ const useErrorCheck = () => {
   const errorCheck = (error) => {
 
     if (error.response) {
+      // Invalid Email
+      if (
+        error.response.data.email &&
+        error.response.data.email[0] === "Enter a valid email address."
+        ) {
+        setErrorMessage("Enter a valid email address.")
+      }
+      // already existing ID
+      if (
+        error.response.data.student_id &&
+        error.response.data.student_id[0] === "user with this student id already exists."
+        ) {
+        setErrorMessage("user with this student id already exists.")
+      }
       // Handle API error (status code 4xx or 5xx)
       console.error(error.response.data);
       if (error.response.data.detail === "Invalid token.") {
-        // setErrorMessage("Invalid token. Please log in again.");
         handleLogout();
       } else if (
         error.response.data.email &&

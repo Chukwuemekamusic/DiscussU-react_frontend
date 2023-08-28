@@ -35,6 +35,7 @@ const useHomeStore = create((set) => ({
   setIsSorted: () => set((state) => ({ isSorted: !state.isSorted })),
 
   updateFollowData: async () => {
+    // updates Users
     const token = Cookies.get("token");
     try {
       const response = await axios.get(
@@ -51,7 +52,7 @@ const useHomeStore = create((set) => ({
   },
 
   isFollowedUser: (userId) => {
-    // const followedUsers = useHomeStore.getState().following;
+    // returns the list of students following a user
     const followedUsers = JSON.parse(localStorage.getItem("following"));
     return followedUsers.some((user) => user.followed_user === userId);
   },

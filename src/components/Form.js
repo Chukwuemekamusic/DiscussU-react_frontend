@@ -10,7 +10,7 @@ import { useNavigate } from "react-router";
 import AuthContext from "../context/AuthProvider";
 import { useContext } from "react";
 import { ErrorCheck } from "./utils/utilFunctions";
-// import useErrorCheck from "./utils/useErrorCheck";
+import useErrorCheck from "./utils/useErrorCheck";
 import { useGoBack } from "./utils/utilFunctions";
 import { useState } from "react";
 
@@ -20,7 +20,7 @@ const Form = () => {
   const token = Cookies.get("token");
   const handleLogout = useHandleLogout();
   const navigate = useNavigate();
-  // const errorCheck = useErrorCheck();
+  const errorCheck = useErrorCheck();
   const setErrorMessage = useHomeStore((state) => state.setErrorMessage);
   const [currentProfilePic, setCurrentProfilePic] = useState(null);
 
@@ -123,8 +123,8 @@ const Form = () => {
         console.error("Registration failed.");
       }
     } catch (error) {
-      ErrorCheck(error);
-      // errorCheck(error)
+      // ErrorCheck(error);
+      errorCheck(error)
     }
   };
 
@@ -164,7 +164,7 @@ const Form = () => {
                   'email', 'student_id', 'school', 'course' */}
         <div className="mb-3">
           <label htmlFor="profile_image" className="form-label">
-            Profile Image
+            Profile Image (<i>Optional</i>)
           </label>
           {currentProfilePic && (
             <img
