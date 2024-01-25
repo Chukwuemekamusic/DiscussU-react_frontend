@@ -1,6 +1,6 @@
 # DiscussU Frontend
 
-DiscussU is a student discussion web application that aims to enhance student engagement and collaboration through its intuitive user interface and interactive features.
+DiscussU is a student discussion web application that aims to enhance student engagement and collaboration through its intuitive user interface and interactive features. The link to the Django backend is https://github.com/Chukwuemekamusic/DiscussU
 
 ## Table of Contents
 - [Introduction](#introduction)
